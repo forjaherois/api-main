@@ -3,8 +3,6 @@ export default class Circle {
 
     constructor(radius: number) {
         this.radius = radius;
-        const teste =
-            'AIahiUHAIUhiauhIUHAIhaiUHAIUhaiuhIUHiuhIUSHIaushiuAHSIUahsiuhASIUHaisuhAIUSHAiuhsiuAHSIUxkjzlxkjzlxjsaSJoiajsoIAJSOIjakxji';
     }
 
     getArea(): number {
