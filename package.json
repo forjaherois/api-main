@@ -19,7 +19,7 @@
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-import-helpers": "^1.2.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "git-commit-msg-linter": "^3.2.8",
+    "git-commit-msg-linter": "^5.0.4",
     "husky": "^8.0.3",
     "jest": "^27.4.3",
     "lint-staged": "^13.2.3",
@@ -34,6 +34,9 @@
     }
   },
   "lint-staged": {
-    "*.{ts,tsx,js,jsx}": ["eslint --fix", "git add"]
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --fix",
+      "git add"
+    ]
   }
 }
