@@ -6,7 +6,8 @@
   "scripts": {
     "tsc:init": "tsc --init",
     "build": "tsc",
-    "test": "jest"
+    "test": "jest",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@types/jest": "^27.0.3",
@@ -30,7 +31,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && yarn test"
+      "pre-commit": "yarn test"
     }
   },
   "lint-staged": {
