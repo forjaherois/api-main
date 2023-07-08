@@ -11,7 +11,7 @@ export class HttpServer {
     ) {}
 
     private registerRoutes() {
-        const routes = RouterFactory.createRoutes();
+        const routes = new RouterFactory().createRoutes();
         const routeRegister = new RouteRegister(this.server, routes);
         routeRegister.registerAllRoutes();
     }
