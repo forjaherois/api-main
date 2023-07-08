@@ -13,4 +13,16 @@ if (!parsedEnv.success) {
     throw new Error("Invalid environment variables");
 }
 
-export const env = parsedEnv.data;
+export interface IEnvironment {
+    NODE_ENV: string;
+    PORT: number;
+}
+
+class Environment implements IEnvironment {
+    constructor(public NODE_ENV: string, public PORT: number) {}
+}
+
+export const env = new Environment(
+    parsedEnv.data.NODE_ENV,
+    parsedEnv.data.PORT
+);

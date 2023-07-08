@@ -1,12 +1,12 @@
 import { FastifyInstance } from "fastify";
 
+import { IEnvironment } from "./env-config";
 import { RouterFactory } from "./router/route-factory";
 import { RouteRegister } from "./router/route-register";
 
 export class HttpServer {
     constructor(
-        private host: string,
-        private port: number,
+        private environment: IEnvironment,
         private server: FastifyInstance
     ) {}
 
@@ -20,8 +20,13 @@ export class HttpServer {
         try {
             this.registerRoutes();
 
-            await this.server.listen({ port: this.port, host: this.host });
-            console.log(`✔ ONLINE SERVER AT: http://localhost:${this.port}`);
+            await this.server.listen({
+                port: this.environment.PORT,
+                host: "0.0.0.0",
+            });
+            console.log(
+                `✔ ONLINE SERVER AT: http://localhost:${this.environment.PORT}`
+            );
         } catch (err) {
             console.error("Error starting the server:", err);
             process.exit(1);
