@@ -5,7 +5,7 @@ import { RouteRegister } from "./router/route-register";
 
 export const httpServer = fastify();
 
-const routes = RouterFactory.createRoutes(httpServer);
+const routes = RouterFactory.createRoutes();
 const routeRegister = new RouteRegister(httpServer, routes);
 
 routeRegister.registerAllRoutes();

@@ -1,16 +1,19 @@
-/* eslint-disable no-console */
-import {env} from './configs/env-config';
-import {httpServer} from './configs/http-server';
+/* eslint-disable no-void */
+import { env } from "./configs/env-config";
+import { httpServer } from "./configs/http-server";
 
-void httpServer.listen({
-	host: '0.0.0.0',
-	port: env.PORT,
-}).then(() => {
-	console.log('☭ READ LENIN ☭');
-	console.log('☭ READ LENIN ☭');
-	console.log('☭ THE SERVER OF THE WORKING CLASS IS RUNNING ☭');
-	console.log('☭ THE SERVER OF THE WORKING CLASS IS RUNNING ☭');
-	console.log(`
+void httpServer
+    .listen({
+        host: "0.0.0.0",
+        port: env.PORT,
+    })
+    .then(() => {
+        console.log("☭ READ LENIN ☭");
+        console.log("☭ READ LENIN ☭");
+        console.log("☭ THE SERVER OF THE WORKING CLASS IS RUNNING ☭");
+        console.log("☭ THE SERVER OF THE WORKING CLASS IS RUNNING ☭");
+        console.log(`🟢 RUNNING IN: http://localhost:${env.PORT}🟢`);
+        console.log(`
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⣿⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⡿⠈⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -35,4 +38,4 @@ void httpServer.listen({
 ⠀⠀⠀⠀⠀⠀⠀⠀⠻⣭⣉⣉⣡⣴⣾⡿⠟⣩⡶⠋⠉⠳⣮⣙⠿⣿⣶⣤⣭⣭⣭⠿⠃⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠉⠉⠉⢴⠟⠁⠀⠀⠀⠀⠀⠙⣷⠄⠉⠉⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 `);
-});
+    });
