@@ -6,12 +6,7 @@ describe("Account", () => {
     const validUUID = uuidv4();
 
     it("should correctly instantiate the account", () => {
-        const account = new Account(
-            "test@test.com",
-            "password",
-            "nickname",
-            validUUID
-        );
+        const account = new Account("test@test.com", "password", "nickname", validUUID);
         expect(account).toBeDefined();
         expect(account.id).toEqual(validUUID);
         expect(account.email).toEqual("test@test.com");
@@ -21,8 +16,7 @@ describe("Account", () => {
 
     it("should throw an error for an invalid email", () => {
         expect(
-            () =>
-                new Account("invalid-email", "password", "nickname", validUUID)
+            () => new Account("invalid-email", "password", "nickname", validUUID)
         ).toThrowError(new Error("Invalid email"));
     });
 
@@ -40,13 +34,7 @@ describe("Account", () => {
 
     it("should throw an error for an invalid UUID", () => {
         expect(
-            () =>
-                new Account(
-                    "test@test.com",
-                    "password",
-                    "nickname",
-                    "invalid-uuid"
-                )
+            () => new Account("test@test.com", "password", "nickname", "invalid-uuid")
         ).toThrowError(new Error("Invalid UUID"));
     });
 });

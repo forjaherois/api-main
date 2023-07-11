@@ -32,9 +32,7 @@ describe("CreateAccount", () => {
             accountData.email
         );
 
-        expect(accountRepository.createAccount).toHaveBeenCalledWith(
-            expect.any(Account)
-        );
+        expect(accountRepository.createAccount).toHaveBeenCalledWith(expect.any(Account));
     });
 
     it("should throw a Conflict error if the account already exists", async () => {

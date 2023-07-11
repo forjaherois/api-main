@@ -9,12 +9,10 @@ const mockReply = {
 } as unknown as FastifyReply;
 
 describe("HealthCheckController", () => {
-    // Limpa a simulação de resposta antes de cada teste
     beforeEach(() => {
         (mockReply.send as jest.Mock).mockClear();
     });
 
-    // Testa se o método 'handler' do controlador envia a resposta correta
     it("should send the correct response", async () => {
         const controller = new HealthCheckController();
 
@@ -23,7 +21,6 @@ describe("HealthCheckController", () => {
         expect(mockReply.send).toHaveBeenCalledWith({ status: "ok" });
     });
 
-    // Testa se o método 'handler' do controlador é chamado uma vez
     it("should call reply.send once", async () => {
         const controller = new HealthCheckController();
 

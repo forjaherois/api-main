@@ -5,10 +5,7 @@ import { RouterFactory } from "./router/route-factory";
 import { RouteRegister } from "./router/route-register";
 
 export class HttpServer {
-    constructor(
-        private environment: IEnvironment,
-        private server: FastifyInstance
-    ) {}
+    constructor(private environment: IEnvironment, private server: FastifyInstance) {}
 
     private registerRoutes() {
         const routes = new RouterFactory().createRoutes();
@@ -24,9 +21,7 @@ export class HttpServer {
                 port: this.environment.PORT,
                 host: "0.0.0.0",
             });
-            console.log(
-                `✔ ONLINE SERVER AT: http://localhost:${this.environment.PORT}`
-            );
+            console.log(`✔ ONLINE SERVER AT: http://localhost:${this.environment.PORT}`);
         } catch (err) {
             console.error("Error starting the server:", err);
             process.exit(1);

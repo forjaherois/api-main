@@ -4,10 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 
 import { Account } from "../../domain/account";
 import { IAccountRepository } from "../../domain/repository";
-import {
-    ICreateAccount,
-    createAccountDTO,
-} from "../../domain/use-cases/create-account";
+import { ICreateAccount, createAccountDTO } from "../../domain/use-cases/create-account";
 
 export class CreateAccount implements ICreateAccount {
     constructor(private repository: IAccountRepository) {}

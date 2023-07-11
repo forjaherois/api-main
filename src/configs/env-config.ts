@@ -22,7 +22,4 @@ class Environment implements IEnvironment {
     constructor(public NODE_ENV: string, public PORT: number) {}
 }
 
-export const env = new Environment(
-    parsedEnv.data.NODE_ENV,
-    parsedEnv.data.PORT
-);
+export const env = new Environment(parsedEnv.data.NODE_ENV, parsedEnv.data.PORT);
