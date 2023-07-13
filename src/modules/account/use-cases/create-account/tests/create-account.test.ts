@@ -1,5 +1,5 @@
 import { Account } from "@src/modules/account/domain/account";
-import { IAccountRepository } from "@src/modules/account/domain/repository";
+import { IAccountRepository } from "@src/modules/account/domain/account-repository";
 import createHttpError from "http-errors";
 import { v4 as uuidv4 } from "uuid";
 

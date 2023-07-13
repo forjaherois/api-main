@@ -16,7 +16,7 @@ export class CreateAccount implements ICreateAccount {
 
         const passwordHash = await hash(password, 10);
         const uuid = uuidv4();
-        const newAccount = new Account(email, nickname, passwordHash, uuid);
+        const newAccount = new Account(email, passwordHash, nickname, uuid);
         await this.repository.createAccount(newAccount);
     }
 }

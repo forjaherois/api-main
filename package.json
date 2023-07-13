@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "tsx watch src/server.ts",
+    "db": "docker-compose up",
     "start": "node build/server.js",
     "build": "tsup src --out-dir build",
     "test": "jest --silent",
