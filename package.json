@@ -47,6 +47,9 @@
     "tsup": "^7.1.0",
     "tsx": "^3.12.7"
   },
+  "prisma":{
+    "schema": "src/database/schema.prisma"
+  },
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": [
       "eslint --fix"
