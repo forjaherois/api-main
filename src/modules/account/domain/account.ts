@@ -25,7 +25,7 @@ export class Account {
     }
 
     private validateEmail(email: string): boolean {
-        return /\S+@\S+\.\S+/.test(email);
+        return /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(email);
     }
 
     private validatePassword(password: string): boolean {
