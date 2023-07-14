@@ -10,7 +10,10 @@
     "build": "tsup src --out-dir build",
     "test": "jest --silent",
     "lint-staged": "lint-staged",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "dev:migrate":"prisma migrate dev",
+    "generate": "prisma generate",
+    "studio": "yarn prisma studio"
   },
   "dependencies": {
     "@prisma/client": "5.0.0",
