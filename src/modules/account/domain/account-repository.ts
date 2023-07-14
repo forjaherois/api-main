@@ -1,5 +1,5 @@
-import { Account } from "./account";
-import { AccountDTO } from "./accountDTO";
+import { Account } from './account';
+import { AccountDTO } from './accountDTO';
 
 export interface IAccountRepository {
     getAccount(id: string): Promise<AccountDTO | null>;

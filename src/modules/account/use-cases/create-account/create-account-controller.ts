@@ -1,7 +1,7 @@
-import { FastifyReply, FastifyRequest } from "fastify";
+import { FastifyReply, FastifyRequest } from 'fastify';
 
-import { createAccountDTO } from "../../domain/use-cases/create-account";
-import { CreateAccount } from "./create-account";
+import { createAccountDTO } from '../../domain/use-cases/create-account';
+import { CreateAccount } from './create-account';
 
 export class CreateAccountController {
     constructor(private useCase: CreateAccount) {}

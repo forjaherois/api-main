@@ -1,8 +1,8 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from '@prisma/client';
 
-import { Account } from "../domain/account";
-import { IAccountRepository } from "../domain/account-repository";
-import { AccountDTO } from "../domain/accountDTO";
+import { Account } from '../domain/account';
+import { IAccountRepository } from '../domain/account-repository';
+import { AccountDTO } from '../domain/accountDTO';
 
 export class AccountsRepository implements IAccountRepository {
     private client: PrismaClient;

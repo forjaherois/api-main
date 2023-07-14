@@ -6,16 +6,16 @@ export class Account {
 
     constructor(email: string, password: string, nickname: string, id: string) {
         if (!this.validateEmail(email)) {
-            throw new Error("Invalid email");
+            throw new Error('Invalid email');
         }
         if (!this.validatePassword(password)) {
-            throw new Error("Invalid password");
+            throw new Error('Invalid password');
         }
         if (!this.validateNickname(nickname)) {
-            throw new Error("Invalid nickname");
+            throw new Error('Invalid nickname');
         }
         if (!this.validateUUID(id)) {
-            throw new Error("Invalid UUID");
+            throw new Error('Invalid UUID');
         }
 
         this.email = email;

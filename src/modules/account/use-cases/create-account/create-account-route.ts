@@ -1,13 +1,13 @@
-import { IRoute } from "@src/configs/router/route";
-import { FastifyInstance } from "fastify";
+import { IRoute } from '@src/configs/router/route';
+import { FastifyInstance } from 'fastify';
 
-import { CreateAccountController } from "./create-account-controller";
+import { CreateAccountController } from './create-account-controller';
 
 export class CreateAccountRouter implements IRoute {
     constructor(private controller: CreateAccountController) {}
 
     registerRoutes(httpServer: FastifyInstance) {
-        httpServer.post("/accounts", async (request, reply) => {
+        httpServer.post('/accounts', async (request, reply) => {
             return this.controller.handler(request, reply);
             // TODO: CREATE UNIT TEST TO ROUTE
         });

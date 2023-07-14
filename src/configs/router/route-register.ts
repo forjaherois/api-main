@@ -1,6 +1,6 @@
-import { FastifyInstance } from "fastify";
+import { FastifyInstance } from 'fastify';
 
-import { IRoute } from "./route";
+import { IRoute } from './route';
 
 export class RouteRegister {
     constructor(

@@ -1,10 +1,10 @@
-import { hash } from "bcrypt";
-import createHttpError from "http-errors";
-import { v4 as uuidv4 } from "uuid";
+import { hash } from 'bcrypt';
+import createHttpError from 'http-errors';
+import { v4 as uuidv4 } from 'uuid';
 
-import { Account } from "../../domain/account";
-import { IAccountRepository } from "../../domain/account-repository";
-import { ICreateAccount, createAccountDTO } from "../../domain/use-cases/create-account";
+import { Account } from '../../domain/account';
+import { IAccountRepository } from '../../domain/account-repository';
+import { ICreateAccount, createAccountDTO } from '../../domain/use-cases/create-account';
 
 export class CreateAccount implements ICreateAccount {
     constructor(private repository: IAccountRepository) {}
