@@ -1,7 +1,7 @@
-import { AccountsRepository } from '@src/modules/account/database/account-repository';
-import { CreateAccount } from '@src/modules/account/use-cases/create-account/create-account';
-import { CreateAccountController } from '@src/modules/account/use-cases/create-account/create-account-controller';
-import { CreateAccountRouter } from '@src/modules/account/use-cases/create-account/create-account-route';
+import { CreateAccount } from '@src/modules/account/core/use-cases/create-account';
+import { AccountsRepository } from '@src/modules/account/infra/account-repository';
+import { CreateAccountController } from '@src/modules/account/infra/create-account-controller';
+import { CreateAccountRouter } from '@src/modules/account/infra/create-account-route';
 import { HealthCheckController } from '@src/modules/health-check/health-controller';
 import { HealthCheckRouter } from '@src/modules/health-check/health-route';
 

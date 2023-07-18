@@ -1,4 +1,4 @@
-import { IRoute } from '@src/configs/router/route';
+import { IRoute } from '@src/infra/router/route';
 import { FastifyInstance } from 'fastify';
 
 import { HealthCheckController } from './health-controller';

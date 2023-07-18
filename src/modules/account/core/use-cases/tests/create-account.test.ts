@@ -1,11 +1,11 @@
-import { Account } from "@src/modules/account/domain/account";
-import { IAccountRepository } from "@src/modules/account/domain/account-repository";
-import createHttpError from "http-errors";
-import { v4 as uuidv4 } from "uuid";
+import { Account } from '@src/modules/account/core/domain/account';
+import createHttpError from 'http-errors';
+import { v4 as uuidv4 } from 'uuid';
 
-import { CreateAccount } from "../create-account";
+import { IAccountRepository } from '../../domain/interfaces/account-repository';
+import { CreateAccount } from '../create-account';
 
-describe("CreateAccount", () => {
+describe('CreateAccount', () => {
     let accountRepository: IAccountRepository;
 
     beforeEach(() => {
@@ -17,11 +17,11 @@ describe("CreateAccount", () => {
         };
     });
 
-    it("should successfully create an account", async () => {
+    it('should successfully create an account', async () => {
         const accountData = {
-            email: "test@test.com",
-            password: "password",
-            nickname: "nickname",
+            email: 'test@test.com',
+            password: 'password',
+            nickname: 'nickname',
         };
 
         const createAccount = new CreateAccount(accountRepository);
@@ -35,11 +35,11 @@ describe("CreateAccount", () => {
         expect(accountRepository.createAccount).toHaveBeenCalledWith(expect.any(Account));
     });
 
-    it("should throw a Conflict error if the account already exists", async () => {
+    it('should throw a Conflict error if the account already exists', async () => {
         const accountData = {
-            email: "test@test.com",
-            password: "password",
-            nickname: "nickname",
+            email: 'test@test.com',
+            password: 'password',
+            nickname: 'nickname',
         };
 
         accountRepository.getAccountByEmail = jest
