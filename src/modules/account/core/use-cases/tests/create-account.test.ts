@@ -1,12 +1,19 @@
 import { Account } from '@src/modules/account/core/domain/account';
-import createHttpError from 'http-errors';
-import { v4 as uuidv4 } from 'uuid';
+import { randomUUID } from 'crypto';
 
+import {
+    IHashProvider,
+    IErrorProvider,
+    IUuidProvider,
+} from '../../domain/interfaces/account-providers';
 import { IAccountRepository } from '../../domain/interfaces/account-repository';
 import { CreateAccount } from '../create-account';
 
 describe('CreateAccount', () => {
     let accountRepository: IAccountRepository;
+    let hashProvider: IHashProvider;
+    let errorProvider: IErrorProvider;
+    let uuidProvider: IUuidProvider;
 
     beforeEach(() => {
         accountRepository = {
@@ -14,6 +21,18 @@ describe('CreateAccount', () => {
             createAccount: jest.fn(),
             getAccount: jest.fn(),
             updateAccount: jest.fn(),
+        };
+
+        hashProvider = {
+            generateHash: jest.fn(),
+        };
+
+        errorProvider = {
+            conflictError: jest.fn(),
+        };
+
+        uuidProvider = {
+            generateUuid: jest.fn(),
         };
     });
 
@@ -24,14 +43,21 @@ describe('CreateAccount', () => {
             nickname: 'nickname',
         };
 
-        const createAccount = new CreateAccount(accountRepository);
+        (hashProvider.generateHash as jest.Mock).mockResolvedValue('hashedPassword');
+        (uuidProvider.generateUuid as jest.Mock).mockReturnValue(randomUUID());
+
+        const createAccount = new CreateAccount(
+            accountRepository,
+            hashProvider,
+            errorProvider,
+            uuidProvider
+        );
 
         await createAccount.execute(accountData);
 
         expect(accountRepository.getAccountByEmail).toHaveBeenCalledWith(
             accountData.email
         );
-
         expect(accountRepository.createAccount).toHaveBeenCalledWith(expect.any(Account));
     });
 
@@ -42,21 +68,30 @@ describe('CreateAccount', () => {
             nickname: 'nickname',
         };
 
+        const conflictError = new Error('Conflict error');
+        errorProvider.conflictError = jest.fn().mockImplementation(() => {
+            throw conflictError;
+        });
+
         accountRepository.getAccountByEmail = jest
             .fn()
             .mockResolvedValue(
                 new Account(
                     accountData.email,
-                    accountData.password,
+                    'hashedPassword',
                     accountData.nickname,
-                    uuidv4()
+                    randomUUID()
                 )
             );
 
-        const createAccount = new CreateAccount(accountRepository);
-
-        await expect(createAccount.execute(accountData)).rejects.toThrow(
-            createHttpError.Conflict
+        const createAccount = new CreateAccount(
+            accountRepository,
+            hashProvider,
+            errorProvider,
+            uuidProvider
         );
+
+        await expect(createAccount.execute(accountData)).rejects.toThrow(conflictError);
+        expect(errorProvider.conflictError).toHaveBeenCalled();
     });
 });

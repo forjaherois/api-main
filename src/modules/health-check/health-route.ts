@@ -4,7 +4,7 @@ import { FastifyInstance } from 'fastify';
 import { HealthCheckController } from './health-controller';
 
 export class HealthCheckRouter implements IRoute {
-    constructor(private controller: HealthCheckController) {}
+    constructor(private controller = new HealthCheckController()) {}
 
     registerRoutes(httpServer: FastifyInstance) {
         httpServer.get('/health-check', async (request, reply) => {
