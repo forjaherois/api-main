@@ -1,3 +1,4 @@
+import { IBrokerServiceProvider } from '@src/modules/account/core/domain/interfaces/account-providers';
 import { FastifyInstance } from 'fastify';
 
 import { IEnvironment } from './env-config';
@@ -5,7 +6,11 @@ import { RouterFactory } from './router/route-factory';
 import { RouteRegister } from './router/route-register';
 
 export class HttpServer {
-    constructor(private environment: IEnvironment, private server: FastifyInstance) {}
+    constructor(
+        private environment: IEnvironment,
+        private server: FastifyInstance,
+        private broker: IBrokerServiceProvider
+    ) {}
 
     private registerRoutes() {
         const routes = new RouterFactory().createRoutes();
@@ -16,6 +21,9 @@ export class HttpServer {
     async start() {
         try {
             this.registerRoutes();
+
+            await this.broker.connect();
+            console.log('✔ RabbitMQ Connected');
 
             await this.server.listen({
                 port: this.environment.PORT,

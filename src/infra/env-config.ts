@@ -4,6 +4,7 @@ import { z } from 'zod';
 const envSchema = z.object({
     NODE_ENV: z.enum(['dev', 'test', 'produciton']).default('dev'),
     PORT: z.coerce.number().default(8000),
+    SERVICE_BROKER_URL: z.string(),
 });
 
 const parsedEnv = envSchema.safeParse(process.env);
@@ -16,10 +17,19 @@ if (!parsedEnv.success) {
 export interface IEnvironment {
     NODE_ENV: string;
     PORT: number;
+    SERVICE_BROKER_URL: string;
 }
 
 class Environment implements IEnvironment {
-    constructor(public NODE_ENV: string, public PORT: number) {}
+    constructor(
+        public NODE_ENV: string,
+        public PORT: number,
+        public SERVICE_BROKER_URL: string
+    ) {}
 }
 
-export const env = new Environment(parsedEnv.data.NODE_ENV, parsedEnv.data.PORT);
+export const env = new Environment(
+    parsedEnv.data.NODE_ENV,
+    parsedEnv.data.PORT,
+    parsedEnv.data.SERVICE_BROKER_URL
+);

@@ -1,5 +1,6 @@
 import { CreateAccount } from '@src/modules/account/core/use-cases/create-account';
 import { AccountsRepository } from '@src/modules/account/infra/account-repository';
+import { broker } from '@src/server';
 
 import { ErrorAdapter } from '../adapters/error-adapter';
 import { HashAdapter } from '../adapters/hash-adapter';
@@ -11,7 +12,14 @@ class CreateAccountFactory {
         const hashAdapter = new HashAdapter();
         const errorAdapter = new ErrorAdapter();
         const uuidProvider = new UuidAdapter();
-        return new CreateAccount(repository, hashAdapter, errorAdapter, uuidProvider);
+
+        return new CreateAccount(
+            repository,
+            hashAdapter,
+            errorAdapter,
+            uuidProvider,
+            broker
+        );
     }
 }
 

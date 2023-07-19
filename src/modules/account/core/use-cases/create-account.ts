@@ -3,6 +3,7 @@ import {
     IHashProvider,
     IErrorProvider,
     IUuidProvider,
+    IBrokerServiceProvider,
 } from '../domain/interfaces/account-providers';
 import { IAccountRepository } from '../domain/interfaces/account-repository';
 import { ICreateAccount, createAccountDTO } from '../domain/use-cases/create-account';
@@ -12,7 +13,8 @@ export class CreateAccount implements ICreateAccount {
         private repository: IAccountRepository,
         private hashProvider: IHashProvider,
         private errorProvider: IErrorProvider,
-        private uuidProvider: IUuidProvider
+        private uuidProvider: IUuidProvider,
+        private broker: IBrokerServiceProvider
     ) {}
 
     async execute(accountData: createAccountDTO): Promise<void> {
@@ -24,5 +26,10 @@ export class CreateAccount implements ICreateAccount {
         const uuid = this.uuidProvider.generateUuid();
         const newAccount = new Account(email, passwordHash, nickname, uuid);
         await this.repository.createAccount(newAccount);
+
+        await this.broker.publish('accountCreated', {
+            accountId: newAccount.id,
+            accountEmail: newAccount.email,
+        });
     }
 }
