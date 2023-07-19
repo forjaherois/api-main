@@ -6,4 +6,5 @@ export interface IAccountRepository {
     getAccountByEmail(email: string): Promise<AccountDTO | null>;
     createAccount(account: Account): Promise<void>;
     updateAccount(account: Account): Promise<void>;
+    updateAccountField(id: string, field: Partial<Account>): Promise<void>;
 }

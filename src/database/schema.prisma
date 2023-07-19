@@ -8,12 +8,12 @@ datasource db {
 }
 
 model Account {
-  id           String   @id
-  nickname     String
-  email        String   @unique
-  password     String
-  is_confirmed Boolean
-  created_at   DateTime @default(now())
+  id          String   @id
+  nickname    String
+  email       String   @unique
+  password    String
+  isConfirmed Boolean
+  created_at  DateTime @default(now())
 
   @@map("accounts")
 }

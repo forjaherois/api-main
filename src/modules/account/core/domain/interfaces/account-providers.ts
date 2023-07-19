@@ -4,6 +4,7 @@ export interface IHashProvider {
 
 export interface IErrorProvider {
     conflictError(): Error;
+    notFount(): Error;
 }
 
 export interface IUuidProvider {
@@ -13,4 +14,8 @@ export interface IUuidProvider {
 export interface IBrokerServiceProvider {
     connect(): Promise<void>;
     publish(eventName: string, data: any): Promise<void>;
+}
+
+export interface IVerifyTokenProvider {
+    verify<T extends { [key: string]: unknown }>(token: string): T;
 }

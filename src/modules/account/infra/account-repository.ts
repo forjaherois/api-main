@@ -14,13 +14,23 @@ export class AccountsRepository implements IAccountRepository {
     async getAccount(id: string): Promise<AccountDTO | null> {
         const account = await this.client.account.findUnique({ where: { id } });
         if (!account) return null;
-        return { id: account.id, email: account.email, nickname: account.nickname };
+        return {
+            id: account.id,
+            email: account.email,
+            nickname: account.nickname,
+            isConfirmed: account.isConfirmed,
+        };
     }
 
     async getAccountByEmail(email: string): Promise<AccountDTO | null> {
         const account = await this.client.account.findUnique({ where: { email } });
         if (!account) return null;
-        return { id: account.id, email: account.email, nickname: account.nickname };
+        return {
+            id: account.id,
+            email: account.email,
+            nickname: account.nickname,
+            isConfirmed: account.isConfirmed,
+        };
     }
 
     async createAccount(account: Account): Promise<void> {
@@ -30,7 +40,7 @@ export class AccountsRepository implements IAccountRepository {
                 nickname: account.nickname,
                 email: account.email,
                 password: account.password,
-                is_confirmed: account.isConfirmed,
+                isConfirmed: account.isConfirmed,
             },
         });
     }
@@ -42,8 +52,15 @@ export class AccountsRepository implements IAccountRepository {
                 nickname: account.nickname,
                 email: account.email,
                 password: account.password,
-                is_confirmed: account.isConfirmed,
+                isConfirmed: account.isConfirmed,
             },
+        });
+    }
+
+    async updateAccountField(id: string, field: Partial<Account>): Promise<void> {
+        await this.client.account.update({
+            where: { id },
+            data: field,
         });
     }
 }
