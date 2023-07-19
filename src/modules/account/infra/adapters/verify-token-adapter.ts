@@ -1,0 +1,16 @@
+import { env } from '@src/infra/env-config';
+import createHttpError from 'http-errors';
+import { verify } from 'jsonwebtoken';
+
+import { IVerifyTokenProvider } from '../../core/domain/interfaces/account-providers';
+
+export class VerifyTokenAdapter implements IVerifyTokenProvider {
+    verify<T extends { [key: string]: unknown }>(token: string): T {
+        try {
+            const decoded = verify(token, env.SECRET_TOKEN);
+            return decoded as T;
+        } catch (error) {
+            throw createHttpError.Unauthorized();
+        }
+    }
+}
