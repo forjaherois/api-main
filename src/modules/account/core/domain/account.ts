@@ -3,8 +3,15 @@ export class Account {
     readonly password: string;
     readonly nickname: string;
     readonly id: string;
+    isConfirmed: boolean;
 
-    constructor(email: string, password: string, nickname: string, id: string) {
+    constructor(
+        email: string,
+        password: string,
+        nickname: string,
+        id: string,
+        isConfirmed = false
+    ) {
         if (!this.validateEmail(email)) {
             throw new Error('Invalid email');
         }
@@ -22,6 +29,7 @@ export class Account {
         this.password = password;
         this.nickname = nickname;
         this.id = id;
+        this.isConfirmed = isConfirmed;
     }
 
     private validateEmail(email: string): boolean {
@@ -40,5 +48,9 @@ export class Account {
         const uuidRegex =
             /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$/;
         return uuidRegex.test(id);
+    }
+
+    confirmAccount(): void {
+        this.isConfirmed = true;
     }
 }

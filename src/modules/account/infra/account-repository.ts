@@ -30,6 +30,7 @@ export class AccountsRepository implements IAccountRepository {
                 nickname: account.nickname,
                 email: account.email,
                 password: account.password,
+                is_confirmed: account.isConfirmed,
             },
         });
     }
@@ -41,6 +42,7 @@ export class AccountsRepository implements IAccountRepository {
                 nickname: account.nickname,
                 email: account.email,
                 password: account.password,
+                is_confirmed: account.isConfirmed,
             },
         });
     }

@@ -5,13 +5,14 @@ import { Account } from './account';
 describe('Account', () => {
     const validUUID = uuidv4();
 
-    it('should correctly instantiate the account', () => {
+    it('should correctly instantiate the account and should not be confirmed', () => {
         const account = new Account('test@test.com', 'password', 'nickname', validUUID);
         expect(account).toBeDefined();
         expect(account.id).toEqual(validUUID);
         expect(account.email).toEqual('test@test.com');
         expect(account.password).toEqual('password');
         expect(account.nickname).toEqual('nickname');
+        expect(account.isConfirmed).toEqual(false); // Check if isConfirmed is false at instantiation
     });
 
     it('should throw an error for an invalid email', () => {
@@ -36,5 +37,11 @@ describe('Account', () => {
         expect(
             () => new Account('test@test.com', 'password', 'nickname', 'invalid-uuid')
         ).toThrowError(new Error('Invalid UUID'));
+    });
+
+    it('should change isConfirmed to true when account is confirmed', () => {
+        const account = new Account('test@test.com', 'password', 'nickname', validUUID);
+        account.confirmAccount();
+        expect(account.isConfirmed).toEqual(true); // Check if isConfirmed is true after confirmation
     });
 });
