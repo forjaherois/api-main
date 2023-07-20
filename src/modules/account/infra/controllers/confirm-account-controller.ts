@@ -2,15 +2,13 @@ import { FastifyReply, FastifyRequest } from 'fastify';
 
 import { ConfirmAccount } from '../../core/use-cases/confirm-account';
 
-export class ConfirmController {
+export class ConfirmAccountController {
     constructor(private useCase: ConfirmAccount) {}
 
-    async handler(
-        request: FastifyRequest<{ Params: { token: string } }>,
-        response: FastifyReply
-    ): Promise<void> {
+    async handler(request: FastifyRequest, response: FastifyReply): Promise<void> {
         try {
-            await this.useCase.execute(request.params.token);
+            const { token } = request.headers;
+            await this.useCase.execute(token as string);
         } catch (err) {
             console.error(err);
             response.status(500).send();

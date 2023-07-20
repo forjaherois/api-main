@@ -5,22 +5,16 @@ import { broker } from '@src/server';
 import { ErrorAdapter } from '../adapters/error-adapter';
 import { HashAdapter } from '../adapters/hash-adapter';
 import { UuidAdapter } from '../adapters/uuid-adapter';
+import { CreateAccountController } from '../controllers/create-account-controller';
 
-class CreateAccountFactory {
-    execute(): CreateAccount {
-        const repository = new AccountsRepository();
-        const hashAdapter = new HashAdapter();
-        const errorAdapter = new ErrorAdapter();
-        const uuidProvider = new UuidAdapter();
+export const createAccountFactory = () => {
+    const makeCreateAccount = new CreateAccount(
+        new AccountsRepository(),
+        new HashAdapter(),
+        new ErrorAdapter(),
+        new UuidAdapter(),
+        broker
+    );
 
-        return new CreateAccount(
-            repository,
-            hashAdapter,
-            errorAdapter,
-            uuidProvider,
-            broker
-        );
-    }
-}
-
-export const createAccountFactory = new CreateAccountFactory();
+    return new CreateAccountController(makeCreateAccount);
+};
