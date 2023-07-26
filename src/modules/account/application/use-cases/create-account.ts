@@ -4,7 +4,7 @@ import { IHashProvider } from '@src/modules/@shared/providers/hash-provaider';
 import { IUuidProvider } from '@src/modules/@shared/providers/uuid-provider';
 
 import { Account } from '../../domain/account';
-import { IAccountRepository } from '../../domain/interfaces/account-repository';
+import { IAccountRepository } from '../../domain/repositories/account-repository';
 import { ICreateAccount, createAccountDTO } from '../../domain/use-cases/create-account';
 
 export class CreateAccount implements ICreateAccount {

@@ -1,7 +1,7 @@
 import { IErrorProvider } from '@src/modules/@shared/providers/errors-provider';
 import { IHandlerTokenProvider } from '@src/modules/@shared/providers/handler-token-provider';
 
-import { IAccountRepository } from '../../domain/interfaces/account-repository';
+import { IAccountRepository } from '../../domain/repositories/account-repository';
 import { IConfirmAccount } from '../../domain/use-cases/confirm-account';
 
 export class ConfirmAccount implements IConfirmAccount {
