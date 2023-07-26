@@ -1,4 +1,4 @@
-import { AccountRouter } from '@src/modules/account/infra/account-router';
+import { AccountRouter } from '@src/modules/account/application/account-router';
 import { HealthCheckRouter } from '@src/modules/health-check/health-route';
 
 import { IRoute } from './route';

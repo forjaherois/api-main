@@ -1,4 +1,4 @@
-import { IBrokerServiceProvider } from '@src/modules/account/core/domain/interfaces/account-providers';
+import { IBrokerServiceProvider } from '@src/modules/@shared/providers/broker-service-provider';
 import { FastifyInstance } from 'fastify';
 
 import { IEnvironment } from './env-config';

@@ -3,7 +3,7 @@ import { Connection, connect } from 'amqplib';
 
 import { IBrokerServiceProvider } from '../providers/broker-service-provider';
 
-export class RabbitMQAdapter implements IBrokerServiceProvider {
+class RabbitMQAdapter implements IBrokerServiceProvider {
     private connection: Connection | undefined;
 
     async connect(): Promise<void> {
@@ -16,3 +16,5 @@ export class RabbitMQAdapter implements IBrokerServiceProvider {
         channel?.sendToQueue(eventName, Buffer.from(JSON.stringify(data)));
     }
 }
+
+export const broker = new RabbitMQAdapter();
