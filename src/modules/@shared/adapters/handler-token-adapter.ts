@@ -2,7 +2,7 @@ import { env } from '@src/infra/env-config';
 import createHttpError from 'http-errors';
 import { verify } from 'jsonwebtoken';
 
-import { IHandlerTokenProvider } from '../domain/handler-token-provider';
+import { IHandlerTokenProvider } from '../providers/handler-token-provider';
 
 export class VerifyTokenAdapter implements IHandlerTokenProvider {
     verify<T extends { [key: string]: unknown }>(token: string): T {

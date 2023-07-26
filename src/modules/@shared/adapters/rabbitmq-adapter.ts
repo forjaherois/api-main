@@ -1,7 +1,7 @@
 import { env } from '@src/infra/env-config';
 import { Connection, connect } from 'amqplib';
 
-import { IBrokerServiceProvider } from '../domain/broker-service-provider';
+import { IBrokerServiceProvider } from '../providers/broker-service-provider';
 
 export class RabbitMQAdapter implements IBrokerServiceProvider {
     private connection: Connection | undefined;

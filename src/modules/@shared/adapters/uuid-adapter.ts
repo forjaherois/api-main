@@ -1,6 +1,6 @@
 import { randomUUID } from 'crypto';
 
-import { IUuidProvider } from '../domain/uuid-provider';
+import { IUuidProvider } from '../providers/uuid-provider';
 
 export class UuidAdapter implements IUuidProvider {
     generateUuid(): string {

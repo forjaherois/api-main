@@ -1,7 +1,7 @@
-import { IBrokerServiceProvider } from '@src/modules/@shared/domain/broker-service-provider';
-import { IErrorProvider } from '@src/modules/@shared/domain/errors-provider';
-import { IHashProvider } from '@src/modules/@shared/domain/hash-provaider';
-import { IUuidProvider } from '@src/modules/@shared/domain/uuid-provider';
+import { IBrokerServiceProvider } from '@src/modules/@shared/providers/broker-service-provider';
+import { IErrorProvider } from '@src/modules/@shared/providers/errors-provider';
+import { IHashProvider } from '@src/modules/@shared/providers/hash-provaider';
+import { IUuidProvider } from '@src/modules/@shared/providers/uuid-provider';
 import { Account } from '@src/modules/account/core/domain/account';
 import { randomUUID } from 'crypto';
 

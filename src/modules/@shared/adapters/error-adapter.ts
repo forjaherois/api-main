@@ -1,6 +1,6 @@
 import createHttpError from 'http-errors';
 
-import { IErrorProvider } from '../domain/errors-provider';
+import { IErrorProvider } from '../providers/errors-provider';
 
 export class ErrorAdapter implements IErrorProvider {
     notFount(): Error {
