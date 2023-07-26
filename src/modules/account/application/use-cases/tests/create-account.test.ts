@@ -2,10 +2,10 @@ import { IBrokerServiceProvider } from '@src/modules/@shared/providers/broker-se
 import { IErrorProvider } from '@src/modules/@shared/providers/errors-provider';
 import { IHashProvider } from '@src/modules/@shared/providers/hash-provaider';
 import { IUuidProvider } from '@src/modules/@shared/providers/uuid-provider';
-import { Account } from '@src/modules/account/core/domain/account';
+import { Account } from '@src/modules/account/domain/account';
 import { randomUUID } from 'crypto';
 
-import { IAccountRepository } from '../../domain/interfaces/account-repository';
+import { IAccountRepository } from '../../../domain/interfaces/account-repository';
 import { CreateAccount } from '../create-account';
 
 describe('CreateAccount', () => {

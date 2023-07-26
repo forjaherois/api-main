@@ -1,6 +1,6 @@
 import { FastifyReply, FastifyRequest } from 'fastify';
 
-import { ConfirmAccount } from '../../core/use-cases/confirm-account';
+import { ConfirmAccount } from '../use-cases/confirm-account';
 
 export class ConfirmAccountController {
     constructor(private useCase: ConfirmAccount) {}
