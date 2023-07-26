@@ -54,3 +54,10 @@ export class Account {
         this.isConfirmed = true;
     }
 }
+// TODO:
+/*
+- [ ] Criar value object de email
+- [ ] Criar Value Object uuid
+- [ ] Criar value Object de password
+- 
+*/

@@ -1,6 +1,6 @@
 import { hash } from 'bcrypt';
 
-import { IHashProvider } from '../../core/domain/interfaces/account-providers';
+import { IHashProvider } from '../domain/hash-provaider';
 
 export class HashAdapter implements IHashProvider {
     async generateHash(password: string): Promise<string> {

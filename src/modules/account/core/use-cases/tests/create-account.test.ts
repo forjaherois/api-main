@@ -1,11 +1,10 @@
+import { IBrokerServiceProvider } from '@src/modules/@shared/domain/broker-service-provider';
+import { IErrorProvider } from '@src/modules/@shared/domain/errors-provider';
+import { IHashProvider } from '@src/modules/@shared/domain/hash-provaider';
+import { IUuidProvider } from '@src/modules/@shared/domain/uuid-provider';
 import { Account } from '@src/modules/account/core/domain/account';
 import { randomUUID } from 'crypto';
 
-import {
-    IHashProvider,
-    IErrorProvider,
-    IUuidProvider,
-} from '../../domain/interfaces/account-providers';
 import { IAccountRepository } from '../../domain/interfaces/account-repository';
 import { CreateAccount } from '../create-account';
 
@@ -14,6 +13,7 @@ describe('CreateAccount', () => {
     let hashProvider: IHashProvider;
     let errorProvider: IErrorProvider;
     let uuidProvider: IUuidProvider;
+    let brokerServiceProvider: IBrokerServiceProvider;
 
     beforeEach(() => {
         accountRepository = {
@@ -21,6 +21,7 @@ describe('CreateAccount', () => {
             createAccount: jest.fn(),
             getAccount: jest.fn(),
             updateAccount: jest.fn(),
+            updateAccountField: jest.fn(), // mock para 'updateAccountField'
         };
 
         hashProvider = {
@@ -29,10 +30,16 @@ describe('CreateAccount', () => {
 
         errorProvider = {
             conflictError: jest.fn(),
+            notFount: jest.fn(),
         };
 
         uuidProvider = {
             generateUuid: jest.fn(),
+        };
+
+        brokerServiceProvider = {
+            publish: jest.fn(),
+            connect: jest.fn(), // mock para 'connect'
         };
     });
 
@@ -50,7 +57,8 @@ describe('CreateAccount', () => {
             accountRepository,
             hashProvider,
             errorProvider,
-            uuidProvider
+            uuidProvider,
+            brokerServiceProvider
         );
 
         await createAccount.execute(accountData);
@@ -88,7 +96,8 @@ describe('CreateAccount', () => {
             accountRepository,
             hashProvider,
             errorProvider,
-            uuidProvider
+            uuidProvider,
+            brokerServiceProvider
         );
 
         await expect(createAccount.execute(accountData)).rejects.toThrow(conflictError);

@@ -1,10 +1,9 @@
+import { IBrokerServiceProvider } from '@src/modules/@shared/domain/broker-service-provider';
+import { IErrorProvider } from '@src/modules/@shared/domain/errors-provider';
+import { IHashProvider } from '@src/modules/@shared/domain/hash-provaider';
+import { IUuidProvider } from '@src/modules/@shared/domain/uuid-provider';
+
 import { Account } from '../domain/account';
-import {
-    IHashProvider,
-    IErrorProvider,
-    IUuidProvider,
-    IBrokerServiceProvider,
-} from '../domain/interfaces/account-providers';
 import { IAccountRepository } from '../domain/interfaces/account-repository';
 import { ICreateAccount, createAccountDTO } from '../domain/use-cases/create-account';
 

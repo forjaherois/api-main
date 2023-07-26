@@ -2,9 +2,9 @@ import { env } from '@src/infra/env-config';
 import createHttpError from 'http-errors';
 import { verify } from 'jsonwebtoken';
 
-import { IVerifyTokenProvider } from '../../core/domain/interfaces/account-providers';
+import { IHandlerTokenProvider } from '../domain/handler-token-provider';
 
-export class VerifyTokenAdapter implements IVerifyTokenProvider {
+export class VerifyTokenAdapter implements IHandlerTokenProvider {
     verify<T extends { [key: string]: unknown }>(token: string): T {
         try {
             const decoded = verify(token, env.SECRET_TOKEN);

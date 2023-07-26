@@ -1,14 +1,13 @@
-import {
-    IVerifyTokenProvider,
-    IErrorProvider,
-} from '../../domain/interfaces/account-providers';
+import { IErrorProvider } from '@src/modules/@shared/domain/errors-provider';
+import { IHandlerTokenProvider } from '@src/modules/@shared/domain/handler-token-provider';
+
 import { IAccountRepository } from '../../domain/interfaces/account-repository';
 import { ConfirmAccount } from '../confirm-account';
 
 describe('ConfirmAccount', () => {
     let confirmAccount: ConfirmAccount;
     let mockRepository: IAccountRepository;
-    let mockVerifyToken: IVerifyTokenProvider;
+    let mockVerifyToken: IHandlerTokenProvider;
     let mockErrorProvider: IErrorProvider;
 
     beforeEach(() => {

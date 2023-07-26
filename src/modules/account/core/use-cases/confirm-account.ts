@@ -1,14 +1,13 @@
-import {
-    IErrorProvider,
-    IVerifyTokenProvider,
-} from '../domain/interfaces/account-providers';
+import { IErrorProvider } from '@src/modules/@shared/domain/errors-provider';
+import { IHandlerTokenProvider } from '@src/modules/@shared/domain/handler-token-provider';
+
 import { IAccountRepository } from '../domain/interfaces/account-repository';
 import { IConfirmAccount } from '../domain/use-cases/confirm-account';
 
 export class ConfirmAccount implements IConfirmAccount {
     constructor(
         private repository: IAccountRepository,
-        private verifyToken: IVerifyTokenProvider,
+        private verifyToken: IHandlerTokenProvider,
         private errorProvider: IErrorProvider
     ) {}
 
