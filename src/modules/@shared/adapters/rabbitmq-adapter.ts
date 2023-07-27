@@ -18,3 +18,7 @@ class RabbitMQAdapter implements IBrokerServiceProvider {
 }
 
 export const broker = new RabbitMQAdapter();
+
+/*
+- [ ] CRIAR TESTE UNITARIO
+*/

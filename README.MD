@@ -74,11 +74,7 @@ Para rodar os testes do projeto, utilize o comando:
 yarn test
 ```
 
-## TODO:
-- [ ] Criar teste unitário do `CreateAccountRouter`
-- [ ] Criar classe de log
-- [ ] Integrar RabbitMQ ao projeto
-- [ ] Cria fila de envio de email de confimação de conta
+
 
 
 

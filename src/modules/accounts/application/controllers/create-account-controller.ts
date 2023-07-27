@@ -11,7 +11,10 @@ export class CreateAccountController {
         } catch (err) {
             console.error(err);
             response.status(409).send();
-            // TODO: CREATE LOG ERROR
+            /*
+            - [ ] CRIAR LOGGER E TRATAMENTO DE ERROS
+            - [ ] CRIAR TESTE UNITARIO
+            */
         }
     }
 }

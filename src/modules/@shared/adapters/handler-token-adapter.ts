@@ -14,3 +14,7 @@ export class VerifyTokenAdapter implements IHandlerTokenProvider {
         }
     }
 }
+
+/*
+- [ ] CRIAR TESTE UNITARIO
+*/

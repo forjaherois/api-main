@@ -7,3 +7,7 @@ export class HashAdapter implements IHashProvider {
         return hash(password, 10);
     }
 }
+
+/*
+- [ ] CRIAR TESTE UNITARIO
+*/
