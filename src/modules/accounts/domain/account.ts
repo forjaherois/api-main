@@ -5,59 +5,43 @@ export class Account {
     readonly id: string;
     isConfirmed: boolean;
 
-    constructor(
-        email: string,
-        password: string,
-        nickname: string,
-        id: string,
-        isConfirmed = false
-    ) {
-        if (!this.validateEmail(email)) {
-            throw new Error('Invalid email');
-        }
-        if (!this.validatePassword(password)) {
-            throw new Error('Invalid password');
-        }
-        if (!this.validateNickname(nickname)) {
-            throw new Error('Invalid nickname');
-        }
-        if (!this.validateUUID(id)) {
-            throw new Error('Invalid UUID');
-        }
-
-        this.email = email;
-        this.password = password;
-        this.nickname = nickname;
-        this.id = id;
-        this.isConfirmed = isConfirmed;
+    constructor(email: string, password: string, nickname: string, id: string) {
+        this.email = this.validateEmail(email);
+        this.password = this.validatePassword(password);
+        this.nickname = this.validateNickname(nickname);
+        this.id = this.validateUUID(id);
+        this.isConfirmed = false;
     }
 
-    private validateEmail(email: string): boolean {
-        return /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(email);
+    private validateEmail(email: string): string {
+        const isValid = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(email);
+        if (!isValid) throw new Error('Invalid email');
+
+        return email;
     }
 
-    private validatePassword(password: string): boolean {
-        return password.length > 0;
+    private validatePassword(password: string): string {
+        const isValid = password.length > 0;
+        if (!isValid) throw new Error('Invalid password');
+
+        return password;
     }
 
-    private validateNickname(nickname: string): boolean {
-        return nickname.length > 0;
+    private validateNickname(nickname: string): string {
+        const isValid = nickname.length > 0;
+        if (!isValid) throw new Error('Invalid nickname');
+        return nickname;
     }
 
-    private validateUUID(id: string): boolean {
+    private validateUUID(id: string): string {
         const uuidRegex =
             /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$/;
-        return uuidRegex.test(id);
+        if (!uuidRegex.test(id)) throw new Error('Invalid UUID');
+
+        return id;
     }
 
     confirmAccount(): void {
         this.isConfirmed = true;
     }
 }
-// TODO:
-/*
-- [ ] Criar value object de email
-- [ ] Criar Value Object uuid
-- [ ] Criar value Object de password
-- 
-*/
